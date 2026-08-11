@@ -1,0 +1,168 @@
+プログラミングII 第6回レポート
+学籍番号：37714072
+氏名：鈴木貴大
+
+練習問題13-1
+(1)×
+(2)○
+(3)○
+(4)×
+(5)×
+(6)○
+(7)○
+(8)×
+(9)○
+
+練習問題13-2
+提出ファイルの説明
+ExceptionTest3はメソッドmyAssignをもつ。これは配列が存在するとき値を代入するものである。代入できなかった場合は例外を投げる。
+
+プログラムの使い方の説明
+ターミナル上のlesson13-2ファイル内でjava ExceptionTest3.javaと入力すると実行される。変数や定数についてはすでにスライドで指定されたとおりに代入されている。
+
+結果
+　デフォルトの出力
+　　代入します
+　　myAssignに来ました
+　　代入できませんでした
+　　例外はjava.lang.ArrayIndexOutOfBoundsException: Index 100 out of bounds for length 3です
+　　終了します
+
+　修正後
+　　myAssignに来ました
+　　代入します
+　　代入しました
+　　myAssignから帰ります
+　　終了します
+
+考察
+与えられたものの修正であったため比較的容易にできた。ただまだ例外処理に対しての理解が浅いので演習によって理解を深めていきたい。
+
+自己評価
+A
+
+練習問題13-3
+修正内容について
+if文を用いてxの大きさによって例外を投げるようにし教科書を参考にprintStackTraceを使って判定した。
+
+提出ファイルの説明
+ExceptionTest5は教科書にあるように引数によって例外を投げる三種類のメソッドを持ちどの例外が投げられたかを判定するクラスである。
+
+プログラムの実行方法
+ターミナル上のlesson13-3ファイル内でjava ExceptionTest5.javaと入力すると実行される。変数や定数についてはすでに代入されている。今回はmethod2()において例外が投げられる。
+
+結果
+java.lang.Exception
+        at ExceptionTest5.method2(ExceptionTest5.java:20)
+        at ExceptionTest5.main(ExceptionTest5.java:6)
+例外:java.lang.Exception
+
+考察
+例外がどこから投げられたか表示できる方法を学ぶことができた。これによってプログラムをよりシンプルにできる。
+
+自己評価
+A
+
+練習問題13-4
+どうしてでしょうかに対する答え
+factorialメソッドの定義内でfactorial()メソッドを使っているためループしているため。
+
+提出ファイルの説明
+FactorialTestクラスは与えられた引数の階乗の結果を返すクラスである。for文を用いて実行している。
+
+プログラムの実行方法
+ターミナル上のlesson13-4ファイル内でjava FactorialTest.javaと入力すると実行される。変数や定数についてはすでに代入されている。今回は10の階乗である。
+
+結果
+3628800
+
+考察
+メソッドの定義内に同一のメソッドを用いる際に発生しうるエラーについて知ることができた。
+
+自己評価
+A
+
+練習問題13-5
+提出ファイルの説明
+教科書にあるExceptionQuizクラスを記述した。try-cathc文によって例外処理がされるようになっている。
+
+プログラムの実行方法
+ターミナル上のlesson13-5ファイル内でjava ExceptionQuiz.javaと入力すると実行される。変数や定数についてはすでに代入されている。
+
+結果
+START
+代入します。
+catch(1)
+finally
+END
+
+なぜ
+プログラムの7行目のa[3] = 123;が定義された配列と異なるためエラーとなった。このエラーは十個中に起こりコンパイラによってチェックされない例外であるためRuntimeExceptionのクラスでキャッチされた。
+
+考察
+例外処理における例外の拾われ方を学ぶことができた。finallyの動きについても確認ができた。
+
+自己評価
+A
+
+課題1
+提出ファイルについて
+計2つのファイルを記述した。スライドで支持されたとおりにプログラムを修正した。
+
+プログラムの実行方法
+ターミナル上のkadai-1ファイル内でmake testと入力すると実行される。
+
+問に対して
+修正前のプログラムにおいてコンパイルエラーがでる。そのエラー内容は" 例外FileNotFoundExceptionは報告されません。スローするには、捕捉または宣言する必要があります"である。原因となる箇所は7行目の"Scanner scanner = new Scanner(new File(filename));while (scanner.hasNextLine()) {"である。その理由は検査例外であるためtry文もしくはthrows節を用いて対処する必要があるためである。
+
+結果
+javac TextToUpper.java
+javac TextToUpperTester.java
+mv foobar.txt foobar_bak.txt
+mv: 'foobar.txt' を stat できません: そのようなファイルやディレクトリはありません
+make: [Makefile:13: test] エラー 1 (無視されました)
+echo "testing data" > foobar.txt
+java TextToUpperTester
+TESTING DATA
+rm -f foobar.txt
+java TextToUpperTester
+エラーだよ。
+java.io.FileNotFoundException: foobar.txt (そのようなファイルやディレクトリはありません)
+mv foobar_bak.txt foobar.txt
+mv: 'foobar_bak.txt' を stat できません: そのようなファイルやディレクトリはありません
+make: [Makefile:18: test] エラー 1 (無視されました)
+
+考察
+あらかじめ型があったため課題を実行できた。「ファイルを開いて大文字に変換する」という処理と、「ファイルがなかった場合にエラーを見せる」という制御を分離することができる。
+
+自己評価
+A
+
+課題2
+提出ファイルの説明
+計3つのファイルを記述した。
+NotNaturalNumberはRuntimeException を継承した例外クラスである。
+RangeAddは計算ロジックと例外クラスを定義している。引数aとbが自然数であるかを事前にチェックし、負の数が含まれている場合はNotNaturalNumber例外をthrowする。
+RangeAddTesterは実際にプログラムを実行するクラスである。同じファイル内に前述した二つのクラスも定義されている。
+
+プログラムの実行方法
+ターミナル上のkadai-2ファイル内でjava　RangeAddTester.javaと入力すると実行される。変数や定数についてはすでに代入されている。変数についてはすでに代入されており1から10の挿話である55が出力される。
+
+結果(a=1, b=10 とも自然数を入れた場合)
+　整数a：整数b：結果は55です。
+結果(a=-1, b=10 どちらかに負の値を入れた場合)
+　整数a：整数b：エラーです。自然数ではない：-1
+結果(a, b がともに10の時)
+　整数a：整数b：結果は10です。
+
+考察
+自然数でない値が入力された際に、独自の例外 NotNaturalNumber を発生させる仕組みを構築した。例外処理を理解する練習になった。すべてのパターンで正しく実行ができた。
+
+自己評価
+A
+
+オプション項目
+教えてもらった人
+37714099　林宏起
+教えた人
+37714099　林宏起
