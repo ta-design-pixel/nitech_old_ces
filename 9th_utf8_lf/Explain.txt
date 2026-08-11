@@ -1,0 +1,399 @@
+プログラミングII 第9回レポート
+学籍番号：37714072
+氏名：鈴木貴大
+
+演習問題18-1
+(1)×
+(2)○
+(3)○
+(4)×
+(5)○
+(6)×
+(7)×
+(8)×
+(9)○
+(10)×
+
+演習問題18-2
+提出ファイルの説明
+提出ファイルはFindFile1.javaである。本プログラムは、コマンドライン引数として指定された検索文字列と検索対象ファイルを受け取り、ファイル内から検索文字列を含む行を探索する。ファイルは BufferedReader を用いて1行ずつ読み込まれ、各行に対して indexOf() メソッドによる文字列検索を行う。検索文字列が含まれている場合は、その行の行番号と内容を表示する。また、ファイルが存在しない場合や読み込み時にエラーが発生した場合には例外処理によってエラーメッセージを表示する。
+
+プログラムの実行方法
+ターミナルのlesson18-2の場所でjava findFiel1 検索文字列　検索ファイル と入力すると実行される。これによって検索文字列と検索対象ファイルを指定して実行する。
+
+結果
+java FindFile1 main FindFile1.java 
+5:    public static void main(String[] args){
+java FindFile1 FindFile1 FindFile1.java 
+4:public class FindFile1{
+java FindFile1 TekitonaMojiretsu FindFile1.java
+
+考察
+BufferedReader を使用することで、大きなファイルであっても一度に全体を読み込むことなく処理できるため、メモリ使用量を抑えることができる。また、indexOf() メソッドを利用することで、指定した文字列が行内に含まれているかを簡単に判定できると考えた。
+
+自己評価
+A
+
+演習問題18-3
+提出ファイルの説明
+作成したファイルは Prime1.java である。本プログラムは、コマンドライン引数で指定されたファイルに1000未満の素数を出力するプログラムである。プログラム実行時に出力先のファイル名を受け取り、PrintWriterを利用してファイルへ書き込みを行う。
+これは教科書の与えられたプログラムに記述を加えている。まず3行目のimport java.io.*;によりパッケージの導入である。次に12行目からのtry文とcatchによって例外処理を施した。21行目のint MAX_PRIME = 10000;によって素数の上限を宣言した。そして30行目のwriter.println(n);を追加することで実際にファイル内に素数を書き込んだ。
+
+プログラムの実行方法
+ターミナル上のlesson18-3の場所でjava Prime1 prime.txtと入力すると実行される。
+
+結果
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+53
+59
+61
+67
+71
+73
+79
+83
+89
+97
+101
+103
+107
+109
+113
+127
+131
+137
+139
+149
+151
+157
+163
+167
+173
+179
+181
+191
+193
+197
+199
+211
+223
+227
+229
+233
+239
+241
+251
+257
+263
+269
+271
+277
+281
+283
+293
+307
+311
+313
+317
+331
+337
+347
+349
+353
+359
+367
+373
+379
+383
+389
+397
+401
+409
+419
+421
+431
+433
+439
+443
+449
+457
+461
+463
+467
+479
+487
+491
+499
+503
+509
+521
+523
+541
+547
+557
+563
+569
+571
+577
+587
+593
+599
+601
+607
+613
+617
+619
+631
+641
+643
+647
+653
+659
+661
+673
+677
+683
+691
+701
+709
+719
+727
+733
+739
+743
+751
+757
+761
+769
+773
+787
+797
+809
+811
+821
+823
+827
+829
+839
+853
+857
+859
+863
+877
+881
+883
+887
+907
+911
+919
+929
+937
+941
+947
+953
+967
+971
+977
+983
+991
+997
+
+
+考察
+結果を画面へ表示するのではなくファイルへ出力することで、後から内容を確認したり別のプログラムで利用したりすることが容易になると考えた。さらに、IOException を用いた例外処理によって、ファイルの作成や書き込みに失敗した場合にもエラー内容を確認できるようになっていると考えた。
+
+自己評価
+A
+
+
+課題1
+提出ファイルの説明
+提出ファイルはFileCopy.javaである。本プログラムは、コマンドライン引数で指定されたコピー元ファイルの内容を読み込み、コピー先ファイルへ同じ内容を書き込むことでファイルの複製を行うプログラムである。
+コピー処理では1024バイトの配列をバッファとして用意し、コピー元ファイルから読み込んだデータを順次コピー先ファイルへ書き込む。コピーが正常に完了すると、コピー元とコピー先のファイル名を表示して処理終了である。
+
+プログラムの実行方法
+ターミナルのkadai1の場所でjava FileCopy コピー元ファイル コピー先ファイルと入力すると実行される。
+
+結果
+javac FileCopy.java
+java FileCopy sample_utf8.txt sample_utf8-copy.txt
+sample_utf8.txt を sample_utf8-copy.txt にコピーしました。
+diff sample_utf8.txt sample_utf8-copy.txt
+java FileCopy sample_sjis.txt sample_sjis-copy.txt
+sample_sjis.txt を sample_sjis-copy.txt にコピーしました。
+diff sample_sjis.txt sample_sjis-copy.txt
+java FileCopy sample.jpg sample-copy.jpg
+sample.jpg を sample-copy.jpg にコピーしました。
+diff sample.jpg sample-copy.jpg
+
+考察
+BufferedInputStream と BufferedOutputStream を利用しているため、1バイトごとに入出力を行う場合と比べて処理効率が向上し、大きなファイルのコピーも比較的高速に実行できることが分かった。入力ストリームと出力ストリームを閉じる処理が実装することが大切だとわかった。
+
+自己評価
+A
+
+課題2
+提出ファイルの説明
+提出ファイルはSearchWord.javaである。本プログラムは、指定したテキストファイルの中から特定のキーワードを検索し、その位置と周辺の文字列を表示するプログラムである。1行ずつ読み込まれ、各行に対して indexOf() メソッドを利用してキーワード検索を行う。キーワードが見つかった場合には、そのキーワードがファイル全体の何文字目に出現したかを計算し、さらに検索語の前後10文字程度を含む周辺文字列を表示する。
+
+プログラムの実行方法
+ターミナル上のkadai2の場所でjava SearchWord ファイル キーワード　と入力すると実行される。
+
+結果
+1文字目
+1:Java is a gene
+335文字目
+1: compiled Java code can 
+383文字目
+1:t support Java without t
+428文字目
+1:tion.[19] Java applicati
+503文字目
+1:un on any Java virtual m
+596文字目
+1:syntax of Java is simila
+697文字目
+1: of 2018, Java was one o
+878文字目
+3:Java was origi
+1049文字目
+3:osystems' Java platform.
+1106文字目
+3:mentation Java compilers
+1281文字目
+3:ns of the Java Community
+1336文字目
+3:st of its Java technolog
+1509文字目
+3:piler for Java (bytecode
+1640文字目
+5:sions are Java 12, relea
+1677文字目
+5:2019, and Java 11, a cur
+1806文字目
+5: "legacy" Java 8 LTS the
+1921文字目
+5:l support Java 8 with pu
+2070文字目
+5:rsions of Java",[23] bec
+2151文字目
+5:24] Since Java 9 (and 10
+2247文字目
+5:ition" to Java 11 (Java 
+2256文字目
+5: Java 11 (Java 12 is als
+2346文字目
+5:he legacy Java 8 LTS, wh
+2409文字目
+5:ary 2019. Java 8 will be
+2574文字目
+5:rsions of Java"[25] beca
+2676文字目
+5:pport for Java 6 ended i
+java SearchWord java.txt latest
+1620文字目
+5:The latest versions 
+java SearchWord java.txt Microsoft
+キーワード 'Microsoft' は見つかりませんでした。
+
+考察
+BufferedReader を利用してテキストファイルを効率的に読み込みながらキーワード検索を行っている。検索処理には indexOf() メソッドを使用しており、キーワードの位置を容易に取得できる。また、検索後に次の位置から再度検索を行うことで、同じ行内に複数回出現するキーワードにも対応している。
+
+自己評価
+A
+
+課題3
+提出ファイルの説明
+提出ファイルはListRecursive.javaである。指定されたディレクトリ内のファイルおよびサブディレクトリの一覧を再帰的に表示するプログラムである。現在の階層の深さを表す depth 引数を利用し、深さに応じて空白を出力することで、ディレクトリ構造を視覚的に分かりやすく表現している。
+
+プログラムの実行方法
+ターミナルのkadai3の場所でjava ListRecursiveディレクトリ名と入力すると実行される。
+
+結果
+カレントディレクトリを表示
+java ListRecursive ./
+1st/
+  3rd.txt
+  4th.txt
+  2nd/
+    java.txt
+    5th.txt
+ListRecursive.java
+Makefile
+ListRecursive.class
+親ディレクトリを表示
+java ListRecursive ../
+Explain.txt
+windows.txt
+challenge/
+  SearchWordRecursive.class
+  SearchWordRecursive.java
+  1st/
+    3rd.txt
+    4th.txt
+    2nd/
+      windows.txt
+      java.txt
+      5th.txt
+  Makefile
+makezip.sh
+lesson18-2/
+  FindFile1.java
+  FindFile1.class
+  Makefile
+kadai1/
+  sample_utf8-copy.txt
+  sample-copy.jpg
+  FileCopy.java
+  sample.jpg
+  sample_sjis-copy.txt
+  sample_sjis.txt
+  Makefile
+  FileCopy.class
+  sample_utf8.txt
+lesson18-3/
+  Prime1.java
+  Makefile
+  Prime1.class
+  prime.txt
+Makefile
+kadai3/
+  1st/
+    3rd.txt
+    4th.txt
+    2nd/
+      java.txt
+      5th.txt
+  ListRecursive.java
+  Makefile
+  ListRecursive.class
+kadai2/
+  java.txt
+  SearchWord.java
+  SearchWord.class
+  Makefile
+
+考察
+本プログラムでは再帰呼び出しを利用することで、ディレクトリ内に存在するサブディレクトリを効率的に探索している。再帰処理を利用することで、階層の深さが事前に分からない場合でも同じ処理を繰り返し適用できるため、簡潔なプログラムでディレクトリツリー全体を表示することが可能となっている。再起処理は便利であることが分かった。
+
+自己評価
+A
+
+
+
+
+
