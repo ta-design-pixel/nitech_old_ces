@@ -1,0 +1,92 @@
+2026年度 プログラミング2 解答用紙
+
+学生番号：37714072
+氏名：鈴木貴大
+
+問題用紙の指示に従い，解答として適切な形式で設問ごとに記述すること．
+解答に必要な事項が不足している場合は得点とならないことがある．
+
+インデントは適切に行うことが望ましいが，過度に手間をかける必要はない．
+また，レポートではないため，解答の意図や説明は不要である．特に指示がない限り，問題に対する解答のみを記述すること．
+
+複数箇所への記述が必要な場合は，どこに記述する内容であるかが分かるように記載すること．
+
+以下に解答を記述せよ．
+
+1.
+(ア)
+    public double winRate(){
+        return wins/games;
+    }
+
+(イ)
+    public int getPoints(){
+        // 値は適宜変更すること
+        int point = 3*wins + 1*draws + 0*losses;
+        return point;
+    }
+
+(ウ)
+        private static int counter = 0;
+
+(エ)
+    Team(){
+        this.id = ++counter;
+    }
+
+(オ)
+    Team(String data){
+        Team id = new Team();
+    }
+
+(カ)
+(キ)public void print(){
+    System.out.printf(name+"(id:"+ id + ")の勝率は"+%%02f:Team.winRate()+", 勝点は"+Team.getPoints()+"です.")
+}
+
+2.
+(ア)
+    interface Queueable {
+    boolean enqueue( Object o);
+    void dequeue();
+    int size();
+}
+(イ)
+abstract class TeamQueue implements Queueable
+理由：インタフェースで宣言されたメソッドは実装しなければいけないがsize()は今回実装されないため。
+(ウ)
+TeamQueue(ArrayList<Team> queue){
+        for(int i = 0; i < queue.size(); i++){
+            this.queue.add(queue.get(i));
+        }
+
+    }
+(エ)
+(オ)
+(カ)
+
+3.
+(ア)
+public String runMatch(Team t1, Tema t2){
+        Team winner = null;
+        if(t1.wuns > t2.wins){
+            return t1;
+        }else if(t1.wins < t2.wins){
+            return t2;
+        }else if((t1.goalsFor - t1.goalsAgainst) > (t2.goalsFor - t2.goalsAgainst)){
+            return t1;
+        }else if((t1.goalsFor - t1.goalsAgainst) < (t2.goalsFor - t2.goalsAgainst)){
+            return t2;
+        }
+    }
+
+(イ)int size(){
+    return queue.size();
+}
+(ウ)Tournament(ArayList<Team> queue){
+        super(queue);
+    }
+(エ)
+(オ)
+(カ)
+(キ)
